@@ -41,6 +41,9 @@ def initalize_session_state_dict():
         st.session_state["selected_motive"] = ""
     if "selected_motive_info" not in st.session_state:
         st.session_state["selected_motive_info"] = ""
+    if "generated_story" not in st.session_state:
+        st.session_state["generated_story"] = ""
+        
     
     
         

@@ -19,6 +19,7 @@ import sys
 import webbrowser
 from openai import OpenAI
 import toml
+from ct_gen.src.modules.image_generation import create_img_download_button
 #from googleapiclient.discovery import build
 
 from ct_gen.src.modules.initialize_session_state import initalize_session_state_dict 
@@ -94,6 +95,8 @@ def generate_conspiracy_theory(prompt, client):
             #result = result.replace("\n", " ")        
             res_box.markdown(f'{result}') 
     
+    return "".join(report).strip()
+    
 # Display page
 def display_page_6():
     
@@ -107,7 +110,7 @@ def display_page_6():
     #st.divider()
     generation_button = st.button("Generate your theory!")
     if generation_button:
-        generate_conspiracy_theory(prompt, client)
+        st.session_state["generated_story"] = generate_conspiracy_theory(prompt, client)
     
-
-
+    create_img_download_button(st.session_state["generated_story"])
+    
